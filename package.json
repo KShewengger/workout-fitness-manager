@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "build": "ng build --prod=true",
-    "build:dev": "ng build --prod=false",
-    "build:production": "npm run clean && npm run build",
+    "build:dev": "ng build --prod=false && ng serve",
+    "build:prod": "npm run clean && npm run build",
     "clean": "rimraf build",
     "start": "npm run build:dev"
   },

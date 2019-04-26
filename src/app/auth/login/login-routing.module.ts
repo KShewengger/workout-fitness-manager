@@ -13,7 +13,8 @@ export const ROUTES: Routes = [
 
 
 @NgModule({
-  imports: [ RouterModule.forChild(ROUTES) ]
+  imports: [ RouterModule.forChild(ROUTES) ],
+  exports: [ RouterModule ]
 })
 export class LoginRoutingModule {}
 

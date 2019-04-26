@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 export class RegisterComponent {
 
   constructor() {}
+
+  registerUser(event: FormGroup) {
+    console.log(event.value);
+  }
 
 }

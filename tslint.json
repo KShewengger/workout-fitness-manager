@@ -61,6 +61,7 @@
       "single"
     ],
     "trailing-comma": false,
+    "no-trailing-whitespace": false,
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,

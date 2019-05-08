@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '@app/auth/shared/shared.module';
 
-import { RegisterComponent } from './containers/register/register.component';
+import { RegisterComponent } from './container/register.component';
 
 import { RegisterRoutingModule } from '@app/auth/register/register-routing.module';
 

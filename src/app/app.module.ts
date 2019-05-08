@@ -3,21 +3,29 @@ import { NgModule } from '@angular/core';
 
 import { AuthModule } from '@app/auth/auth.module';
 
-import { AppComponent } from '@app/containers/app/app.component';
+import { AppComponent } from '@app/root/container/app.component';
+import { HeaderComponent } from '@app/root/components/header/header.component';
+import { NavbarComponent } from '@app/root/components/navbar/navbar.component';
+
+import { Store } from '@app/store';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule
   ],
-  providers: [],
+  providers: [
+    Store
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

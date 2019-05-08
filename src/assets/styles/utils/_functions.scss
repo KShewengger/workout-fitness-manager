@@ -1,0 +1,3 @@
+@function svg($name) {
+  @return url('/assets/images/#{$name}.svg');
+}

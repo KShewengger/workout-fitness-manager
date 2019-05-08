@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '@app/auth/shared/shared.module';
 
-import { LoginComponent } from './containers/login/login.component';
+import { LoginComponent } from './container/login.component';
 
 import { LoginRoutingModule } from '@app/auth/login/login-routing.module';
 

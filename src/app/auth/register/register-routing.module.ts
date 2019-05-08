@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RegisterComponent } from './containers/register/register.component';
+import { RegisterComponent } from './container/register.component';
 
 
 export const ROUTES: Routes = [

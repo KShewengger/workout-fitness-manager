@@ -2,6 +2,7 @@
   "extends": "../tslint.json",
   "rules": {
     "no-shadowed-variable": false,
+    "curly": false,
     "directive-selector": [
       true,
       "attribute",

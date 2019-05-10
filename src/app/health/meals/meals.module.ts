@@ -5,7 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MealsRoutingModule } from '@app/health/meals/meals-routing.module';
 import { SharedModule } from '@app/health/shared/shared.module';
 
-import { MealsComponent } from '@app/health/meals/container/meals.component';
+import { MealsComponent } from '@app/health/meals/containers/meals/meals.component';
+import { MealComponent } from '@app/health/meals/containers/meal/meal.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MealsComponent } from '@app/health/meals/container/meals.component';
     MealsRoutingModule
   ],
   declarations: [
-    MealsComponent
+    MealsComponent,
+    MealComponent
   ]
 })
 export class MealsModule {}

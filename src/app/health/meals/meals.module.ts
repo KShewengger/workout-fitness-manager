@@ -8,6 +8,8 @@ import { SharedModule } from '@app/health/shared/shared.module';
 import { MealsComponent } from '@app/health/meals/containers/meals/meals.component';
 import { MealComponent } from '@app/health/meals/containers/meal/meal.component';
 
+import { MealFormComponent } from '@app/health/meals/components/meal-form/meal-form.component';
+
 
 @NgModule({
   imports: [
@@ -18,7 +20,8 @@ import { MealComponent } from '@app/health/meals/containers/meal/meal.component'
   ],
   declarations: [
     MealsComponent,
-    MealComponent
+    MealComponent,
+    MealFormComponent
   ]
 })
 export class MealsModule {}

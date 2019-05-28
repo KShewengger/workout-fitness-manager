@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
+import { ListItemComponent } from '@app/health/shared/components/list-item/list-item.component';
+
 import { MealsService } from '@app/health/shared/services/meals.service';
 
 
@@ -13,7 +15,8 @@ import { MealsService } from '@app/health/shared/services/meals.service';
     RouterModule,
     AngularFireDatabaseModule
   ],
-  declarations: []
+  declarations: [ ListItemComponent ],
+  exports: [ ListItemComponent ]
 })
 export class SharedModule {
 

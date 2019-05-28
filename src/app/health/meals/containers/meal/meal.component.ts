@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Meal } from '@app/health/shared/services/meals.service';
+import { Meal, MealsService } from '@app/health/shared/services/meals.service';
 
 
 @Component({
@@ -10,10 +11,16 @@ import { Meal } from '@app/health/shared/services/meals.service';
 })
 export class MealComponent {
 
-  constructor() {}
+  constructor(private router: Router,
+              private mealsService: MealsService) {}
 
-  addMeal(event: Meal) {
-    console.log('Meal:', event);
+  async addMeal(event: Meal) {
+    await this.mealsService.addMeal(event);
+    this.backToMeals();
+  }
+
+  backToMeals() {
+    this.router.navigate(['meals']);
   }
 
 }

@@ -18,7 +18,8 @@
     </div>
 
     <app-list-item *ngFor="let meal of meals"
-                   [item]="meal">
+                   [item]="meal"
+                   (remove)="removeMeal($event)">
     </app-list-item>
     <!-- meals ngFor -->
   </div>

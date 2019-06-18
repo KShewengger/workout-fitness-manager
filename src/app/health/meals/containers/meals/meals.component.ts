@@ -29,7 +29,7 @@ export class MealsComponent implements OnInit, OnDestroy {
   }
 
   removeMeal(event: Meal) {
-    this.mealsService.removeMeal(event.$key);
+    this.mealsService.removeMeal(event.key);
   }
 
 }

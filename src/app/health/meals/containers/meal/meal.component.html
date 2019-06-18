@@ -2,7 +2,13 @@
   <div class="meal__title">
     <h1>
       <img src="assets/images/food.svg">
-      <span>Create meal</span>
+      <span *ngIf="meal$ | async as meal; else title;">
+        {{ meal.name ? 'Edit' : 'Create' }} meal
+      </span>
+
+      <ng-template #title>
+        Loading...
+      </ng-template>
     </h1>
   </div>
   <div>

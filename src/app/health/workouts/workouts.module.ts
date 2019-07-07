@@ -2,19 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
+
+import { WorkoutFormComponent } from './components/workout-form/workout-form.component';
+import { WorkoutsComponent } from '@app/health/workouts/containers/workouts/workouts.component';
+import { WorkoutComponent } from '@app/health/workouts/containers/workout/workout.component';
+
 import { WorkoutsRoutingModule } from '@app/health/workouts/workouts-routing.module';
 
-import { WorkoutsComponent } from '@app/health/workouts/container/workouts.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    WorkoutsRoutingModule
+    WorkoutsRoutingModule,
+    SharedModule
   ],
   declarations: [
-    WorkoutsComponent
+    WorkoutsComponent,
+    WorkoutComponent,
+    WorkoutFormComponent
   ]
 })
 export class WorkoutsModule {}

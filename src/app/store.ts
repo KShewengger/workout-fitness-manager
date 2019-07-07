@@ -5,17 +5,20 @@ import { pluck, distinctUntilChanged } from 'rxjs/operators';
 
 import { User } from '@app/auth/shared/services/auth.service';
 import { Meal } from '@app/health/shared/services/meals.service';
+import { Workout } from '@app/health/shared/services/workouts.service';
 
 
 export interface State {
   user: User;
   meals: Meal[];
+  workouts: Workout[];
   [key: string]: any;
 }
 
 const state: State = {
   user: undefined,
-  meals: undefined
+  meals: undefined,
+  workouts: undefined
 };
 
 @Injectable({ providedIn: 'root' })

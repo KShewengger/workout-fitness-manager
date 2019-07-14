@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { WorkoutFormComponent } from './components/workout-form/workout-form.component';
 import { WorkoutsComponent } from '@app/health/workouts/containers/workouts/workouts.component';
 import { WorkoutComponent } from '@app/health/workouts/containers/workout/workout.component';
+import { WorkoutTypeComponent } from '@app/health/workouts/components/workout-type/workout-type.component';
 
 import { WorkoutsRoutingModule } from '@app/health/workouts/workouts-routing.module';
 
@@ -22,7 +23,8 @@ import { WorkoutsRoutingModule } from '@app/health/workouts/workouts-routing.mod
   declarations: [
     WorkoutsComponent,
     WorkoutComponent,
-    WorkoutFormComponent
+    WorkoutFormComponent,
+    WorkoutTypeComponent
   ]
 })
 export class WorkoutsModule {}

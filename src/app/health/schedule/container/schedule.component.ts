@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Observable, Subscription } from 'rxjs';
+
+import { ScheduleService } from '@app/health/shared/services/schedule.service';
+
+import { Store } from '@app/store';
 
 
 @Component({
@@ -6,8 +12,26 @@ import { Component } from '@angular/core';
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss']
 })
-export class ScheduleComponent {
+export class ScheduleComponent implements OnInit, OnDestroy {
 
-  constructor() {}
+  date$: Observable<Date>;
+  subscriptions: Subscription[] = [];
+
+  constructor(
+    private store: Store,
+    private scheduleService: ScheduleService
+  ) {}
+
+  ngOnInit() {
+    this.date$ = this.store.select('date');
+
+    this.subscriptions = [
+      this.scheduleService.schedule$.subscribe(),
+    ];
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 
 }

@@ -3,4 +3,7 @@
     [selected]="selectedDay"
     (move)="onChange($event)">
   </app-schedule-controls>
+
+  <app-schedule-days [selected]="selectedDayIndex"
+                     (select)="selectDay($event)"></app-schedule-days>
 </div>

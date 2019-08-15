@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-schedule-days',
@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 })
 export class ScheduleDaysComponent {
 
-  constructor() {}
+  days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+  @Input()
+  selected: number;
+
+  @Output()
+  select = new EventEmitter<number>();
+
+  selectDay(index: number) {
+    this.select.emit(index);
+  }
 
 }

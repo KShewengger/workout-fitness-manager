@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
+import { ScheduleItem, ScheduleList } from '@app/health/shared/services/schedule.service';
+
 
 @Component({
   selector: 'app-schedule-calendar',
@@ -8,17 +10,27 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 })
 export class ScheduleCalendarComponent implements OnChanges {
 
-  selectedDayIndex: number;
-  selectedDay: Date;
-  selectedWeek: Date;
-
   @Input()
   set date(date: Date) {
     this.selectedDay = new Date(date.getTime());
   }
 
+  @Input()
+  items: ScheduleList;
+
   @Output()
   change = new EventEmitter<Date>();
+
+  sections = [
+    { key: 'morning', name: 'Morning' },
+    { key: 'lunch', name: 'Lunch' },
+    { key: 'evening', name: 'Evening' },
+    { key: 'snacks', name: 'Snacks and Drinks' },
+  ];
+
+  selectedDayIndex: number;
+  selectedDay: Date;
+  selectedWeek: Date;
 
   constructor() {}
 
@@ -40,6 +52,10 @@ export class ScheduleCalendarComponent implements OnChanges {
     );
     startDate.setDate(startDate.getDate() + (weekOffset * 7));
     this.change.emit(startDate);
+  }
+
+  getSection(name: string): ScheduleItem {
+    return this.items && this.items[name] || {};
   }
 
   private getToday(date: Date) {

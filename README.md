@@ -1,5 +1,5 @@
 # Workout Fitness App
-> An Angular 7 and Firebase application that monitors your health, schedule and meals. Learned and Inspired from Todd Motto's Angular Pro Course
+> An Angular 7 and Firebase application that monitors your health, schedule and meals. Learned and Inspired from Todd Motto
 
 
 #### Back End Tools Used:

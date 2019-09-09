@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
-import { ScheduleService } from '@app/health/shared/services/schedule.service';
+import { ScheduleItem, ScheduleService } from '@app/health/shared/services/schedule.service';
 
 import { Store } from '@app/store';
 
@@ -16,6 +16,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   date$: Observable<Date>;
   subscriptions: Subscription[] = [];
+  schedule$: Observable<ScheduleItem[]>;
 
   constructor(
     private store: Store,
@@ -24,9 +25,11 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.date$ = this.store.select('date');
+    this.schedule$ = this.store.select('schedule');
 
     this.subscriptions = [
       this.scheduleService.schedule$.subscribe(),
+      this.scheduleService.selected$.subscribe(),
     ];
   }
 
@@ -36,6 +39,11 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   changeDate(date: Date) {
     this.scheduleService.updateDate(date);
+  }
+
+  changeSection(event: any) {
+    console.log(event);
+    this.scheduleService.selectSection(event);
   }
 
 }

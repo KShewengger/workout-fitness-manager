@@ -21,6 +21,9 @@ export class ScheduleCalendarComponent implements OnChanges {
   @Output()
   change = new EventEmitter<Date>();
 
+  @Output()
+  select = new EventEmitter<any>();
+
   sections = [
     { key: 'morning', name: 'Morning' },
     { key: 'lunch', name: 'Lunch' },
@@ -39,6 +42,7 @@ export class ScheduleCalendarComponent implements OnChanges {
     this.selectedWeek = this.getStartOfWeek(new Date(this.selectedDay));
   }
 
+
   selectDay(index: number) {
     const selectedDay = new Date(this.selectedWeek);
     selectedDay.setDate(selectedDay.getDate() + index);
@@ -56,6 +60,18 @@ export class ScheduleCalendarComponent implements OnChanges {
 
   getSection(name: string): ScheduleItem {
     return this.items && this.items[name] || {};
+  }
+
+  selectSection({ type, assigned, data }: any, section: string) {
+    const day = this.selectedDay;
+
+    this.select.emit({
+      type,
+      assigned,
+      section,
+      day,
+      data
+    });
   }
 
   private getToday(date: Date) {

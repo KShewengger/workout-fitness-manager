@@ -3,6 +3,7 @@
   "rules": {
     "no-shadowed-variable": false,
     "curly": false,
+    "no-bitwise": false,
     "directive-selector": [
       true,
       "attribute",

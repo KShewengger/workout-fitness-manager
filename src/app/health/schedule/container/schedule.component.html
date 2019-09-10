@@ -6,4 +6,11 @@
     (select)="changeSection($event)">
   </app-schedule-calendar>
 
+  <app-schedule-assign
+    *ngIf="open"
+    [section]="selected$ | async"
+    [list]="list$ | async">
+  </app-schedule-assign>
+
+
 </div>

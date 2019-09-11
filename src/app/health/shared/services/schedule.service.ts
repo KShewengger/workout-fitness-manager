@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
-import { tap, map, switchMap } from 'rxjs/operators';
+import { tap, map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { Store } from '@app/store';
 
@@ -32,6 +32,29 @@ export class ScheduleService {
 
   private date$ = new BehaviorSubject(new Date());
   private section$ = new Subject();
+  private itemList$ = new Subject();
+
+  items$ = this.itemList$
+    .pipe(
+      withLatestFrom(this.section$),
+      map(([ items, section ]: any[]) => {
+
+        const id = section.data.key;
+
+        const defaults: ScheduleItem = {
+          workouts: null,
+          meals: null,
+          section: section.section,
+          timestamp: new Date(section.day).getTime()
+        };
+
+        const payload = {
+          ...(id ? section.data : defaults),
+          ...items
+        };
+
+        return id ? this.updateSection(id, payload) : this.createSection(payload);
+    }));
 
   selected$ = this.section$
     .pipe(tap((next: any) => this.store.set('selected', next)));
@@ -87,16 +110,27 @@ export class ScheduleService {
     this.date$.next(date);
   }
 
+  updateItems(items: string[]) {
+    this.itemList$.next(items);
+  }
+
   selectSection(event: any) {
     this.section$.next(event);
   }
 
-  getSchedule(startAt: number, endAt: number) {
+  private createSection(payload: ScheduleItem) {
+    return this.db.list(`schedule/${this.uid}`).push(payload);
+  }
+
+  private updateSection(key: string, payload: ScheduleItem) {
+    return this.db.object(`schedule/${this.uid}/${key}`).update(payload);
+  }
+
+  private getSchedule(startAt: number, endAt: number) {
     return this.db
       .list(`schedule/${this.uid}`, ref => ref.orderByChild('timestamp').startAt(startAt).endAt(endAt))
       .snapshotChanges()
       .pipe(map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))));
   }
-
 
 }
